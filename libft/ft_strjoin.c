@@ -20,10 +20,17 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	if (!s1 || !s2)
+	if (!s1)
+	{
+		free(s1);
 		return (NULL);
-	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)
-				+ 1));
+	}
+	if (!s2)
+	{
+		free(s2);
+		return (NULL);
+	}
+	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);
 	while (s1[i])
@@ -37,5 +44,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	res[i + j] = '\0';
+	free(s1);
 	return (res);
 }

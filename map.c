@@ -82,15 +82,18 @@ int	copi_matrice(t_matrice *cor, char *file)
 	char	**tab;
 
 	fd = open(file, O_RDONLY);
-	cor->matrice = malloc(sizeof(int) * cor->y_max);
+	cor->matrice = malloc(sizeof(int *) * cor->y_max);
 	if (!cor->matrice)
 		return (1);
 	while (cor->ligne < cor->y_max)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			return (0);
 		tab = ft_split(line, ' ');
-		free(line);
 		cor->matrice[cor->ligne] = malloc(cor->x_max * sizeof(int));
+		if (!cor->matrice[cor->ligne])
+			return 0;
 		while (cor->colonne < cor->x_max)
 		{
 			cor->matrice[cor->ligne][cor->colonne] = ft_atoi(tab[cor->colonne]);
@@ -98,70 +101,72 @@ int	copi_matrice(t_matrice *cor, char *file)
 			cor->colonne++;
 		}
 		free(tab);
+		free(line);
 		cor->ligne++;
 	}
 	close(fd);
 	return (0);
 }
 
-void	free_matrix(t_matrice *cor)
-{
-	if (cor->matrice)
-	{
-		for (int i = 0; i < cor->y_max; i++)
-		{
-			if (cor->matrice[i])
-				free(cor->matrice[i]);
-		}
-		free(cor->matrice);
-		cor->matrice = NULL;
-	}
+static void free_matrix(t_matrice *cor) {
+    if (cor->matrice) {
+        for (int i = 0; i < cor->y_max; i++) {
+            if (cor->matrice[i]) {
+                free(cor->matrice[i]);
+            }
+        }
+        free(cor->matrice);
+    }
 }
+/*
+int main(int argc, char **argv) {
+    t_matrice cor;
 
-int	main(int argc, char **argv)
-{
-	t_matrice	cor;
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <fichier_map>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "Usage: %s <fichier_map>\n", argv[0]);
-		return (EXIT_FAILURE);
-	}
-	// Initialisation des variables dans la structure
-	cor.x_max = 0;
-	cor.y_max = 0;
-	cor.ligne = 0;
-	cor.colonne = 0;
-	cor.x = 0; // Assurez-vous que cor->x est bien initialisé
-	cor.y = 0; // Assurez-vous que cor->y est bien initialisé
-	// Calculer les dimensions de la matrice
-	map_coord(&cor, argv[1]);
-	printf("Dimensions calculées: y_max = %d, x_max = %d\n", cor.y_max,
-		cor.x_max);
-	// Vérifier la validité de la matrice
-	check_map(&cor, argv[1]);
-	// Afficher les valeurs de cor->ligne et cor->colonne avant allocation
-	printf("Avant allocation:\n");
-	printf("Ligne: %d\n", cor.ligne);
-	printf("Colonne: %d\n", cor.colonne);
-	// Allouer la matrice et la remplir avec des données du fichier
-	copi_matrice(&cor, argv[1]);
-		// Assurez-vous que cette fonction est correctement implémentée
-	printf("Après allocation:\n");
-	printf("Ligne: %d\n", cor.ligne);
-	printf("Colonne: %d\n", cor.colonne);
-	// Affichage du contenu de la matrice pour vérifier le remplissage
-	printf("Contenu de la matrice:\n");
-	for (int i = 0; i < cor.y_max; i++)
-	{
-		for (int j = 0; j < cor.x_max; j++)
-		{
-			printf("%d ", cor.matrice[i][j]);
-		}
-		printf("\n");
-	}
-	// Libération de la mémoire
-	free_matrix(&cor);
-		// Utilisez une fonction pour libérer la mémoire de la matrice
-	return (EXIT_SUCCESS);
+    // Initialisation des variables dans la structure
+    cor.x_max = 0;
+    cor.y_max = 0;
+    cor.ligne = 0;
+    cor.colonne = 0;
+    cor.x = 0; // Assurez-vous que cor->x est bien initialisé
+    cor.y = 0; // Assurez-vous que cor->y est bien initialisé
+    cor.matrice = NULL;  // Initialisation de la matrice
+
+    // Calculer les dimensions de la matrice
+    map_coord(&cor, argv[1]);
+
+    printf("Dimensions calculées: y_max = %d, x_max = %d\n", cor.y_max, cor.x_max);
+
+    // Vérifier la validité de la matrice
+    check_map(&cor, argv[1]);
+
+    // Allouer la matrice et la remplir avec des données du fichier
+    if (copi_matrice(&cor, argv[1]) != 0) {
+        fprintf(stderr, "Erreur dans copi_matrice\n");
+        free_matrix(&cor);
+        return EXIT_FAILURE;
+    }
+
+    printf("Après allocation:\n");
+    printf("Ligne: %d\n", cor.ligne);
+    printf("Colonne: %d\n", cor.colonne);
+
+    // Affichage du contenu de la matrice pour vérifier le remplissage
+    printf("Contenu de la matrice:\n");
+    for (int i = 0; i < cor.y_max; i++) {
+        for (int j = 0; j < cor.x_max; j++) {
+            printf("%d ", cor.matrice[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Libération de la mémoire
+    free_matrix(&cor);
+
+    return EXIT_SUCCESS;
 }
+*/

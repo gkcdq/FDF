@@ -39,11 +39,23 @@ typedef struct matrice
 	int		colonne;
 }			t_matrice;
 
+typedef struct bresenham
+{
+    int     dx;
+    int     dy;
+    int	    sx;
+	int	    sy;
+	int	    error;
+	int	    e2;
+}   		t_brs;
+
+// map.c
 void		map_coord(t_matrice *cor, char *file);
-// calcul les coordonne x et y d'une matrice donnee.
 void		check_map(t_matrice *cor, char *file);
-// verifie qu'il n'y est pas d'erreur de calcul de la fonction map_coord.
 int			copi_matrice(t_matrice *cor, char *file);
-// copi la matrice dans un tableau de int.
+// draw.c
+void    draw_lines(t_matrice *cor, t_mlx *mlx);
+// bresenham.c
+void	bresenham(int x0, int y0, int x1, int y1, t_mlx *mlx);
 
 #endif

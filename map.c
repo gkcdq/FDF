@@ -105,21 +105,6 @@ int	copi_matrice(t_matrice *cor, char *file)
 	return (0);
 }
 
-void	draw_pixels(t_matrice *cor, t_mlx *mlx)
-{
-	int x, y;
-	int x2d, y2d;
-	for (y = 0; y < cor->y_max; y++)
-	{
-		for (x = 0; x < cor->x_max; x++)
-		{
-			x2d = x * 10;
-			y2d = y * 10 - cor->matrice[y][x];
-			mlx_pixel_put(mlx->mlx, mlx->win, x2d, y2d, 0xFFFFFF);
-		}
-	}
-}
-
 void	bresenham(int x0, int y0, int x1, int y1, t_mlx *mlx)
 {
 	int	dx;
@@ -210,8 +195,7 @@ int	main(int ac, char **av)
 		mlx.hauteur_max = 600;
 		mlx.img_largeur_max = 1100;
 		mlx.img_hauteur_max = 500;
-		mlx.img = mlx_new_image(mlx.mlx, mlx.img_largeur_max,
-				mlx.img_hauteur_max);
+		mlx.img = mlx_new_image(mlx.mlx, mlx.img_largeur_max,	mlx.img_hauteur_max);
 		mlx.win = mlx_new_window(mlx.mlx, mlx.largeur_max, mlx.hauteur_max,
 				"FDF");
 		// Dessiner les lignes de la matrice avec Bresenham

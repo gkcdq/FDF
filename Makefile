@@ -1,4 +1,4 @@
-SRCS    = map.c
+SRCS    = map.c draw.c
 OBJS    = $(SRCS:.c=.o)
 NAME    = fdf
 CC      = gcc -g

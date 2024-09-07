@@ -74,12 +74,6 @@ void	check_map(t_matrice *cor, char *file)
 // faire une fonction qui copie la matrix et la tranforme en un tableau de int;
 // tant que y (ma hauteur) est different de y_max (hauteur total) je boucle;
 // j'alloue la memoire pour x (int * le nombre de colonne);
-static void free_matrice(t_matrice *cor) {
-    for (int i = 0; i < cor->ligne; i++) {
-        free(cor->matrice[i]);
-    }
-    free(cor->matrice);
-}
 
 int copi_matrice(t_matrice *cor, char *file)
 {
@@ -98,23 +92,15 @@ int copi_matrice(t_matrice *cor, char *file)
     while (cor->ligne < cor->y_max)
     {
         line = get_next_line(fd);
-        if (!line)
-        {
-            free_matrice(cor);
-            return (0); // Libérer toute la matrice avant de retourner
-        }
-
         tab = ft_split(line, ' ');
         cor->matrice[cor->ligne] = malloc(cor->x_max * sizeof(int));
-        if (!cor->matrice[cor->ligne])
+        /*if (!cor->matrice[cor->ligne])
         {
-            free_matrice(cor);
             free(tab);
             free(line);
             return (1);
-        }
-
-        cor->colonne = 0;  // Réinitialisation après chaque ligne
+        }*/
+        cor->colonne = 0;
         while (cor->colonne < cor->x_max)
         {
             cor->matrice[cor->ligne][cor->colonne] = ft_atoi(tab[cor->colonne]);
@@ -125,12 +111,18 @@ int copi_matrice(t_matrice *cor, char *file)
         free(line);
         cor->ligne++;
     }
-
     close(fd);
     return (0);
 }
 
-
+static void free_matrice(t_matrice *cor)
+{
+    for (int i = 0; i < cor->ligne; i++)
+    {
+        free(cor->matrice[i]);
+    }
+    free(cor->matrice);
+}
 
 int main(int argc, char **argv) {
     t_matrice cor;

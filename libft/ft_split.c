@@ -29,19 +29,6 @@ static int count_words(const char *str, char sep)
     return count;
 }
 
-static void ft_freetableau(char **tab)
-{
-    int i = 0;
-
-    if (!tab)
-        return;
-    while (tab[i])
-    {
-        free(tab[i]);
-        i++;
-    }
-    free(tab);
-}
 
 static char **tableau(const char *str, char sep, int leng)
 {
@@ -65,7 +52,7 @@ static char **tableau(const char *str, char sep, int leng)
         tab[j] = malloc(sizeof(char) * (k - i + 1));
         if (!tab[j])
         {
-            ft_freetableau(tab);
+            free_tab(tab);  // Libère toute la mémoire déjà allouée
             return NULL;
         }
         m = 0;
@@ -75,8 +62,21 @@ static char **tableau(const char *str, char sep, int leng)
         j++;
     }
     tab[j] = NULL;
-    return tab;
+    return tab;  // Ne pas libérer ici
 }
+
+void free_tab(char **tab)
+{
+    int i = 0;
+
+    while (tab[i])
+    {
+        free(tab[i]);
+        i++;
+    }
+    free(tab);
+}
+
 
 char **ft_split(const char *st, char sep)
 {

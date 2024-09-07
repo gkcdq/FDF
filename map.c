@@ -84,22 +84,14 @@ int copi_matrice(t_matrice *cor, char *file)
     fd = open(file, O_RDONLY);
     if (fd < 0)
         return (1);
-
     cor->matrice = malloc(sizeof(int *) * cor->y_max);
     if (!cor->matrice)
         return (1);
-
     while (cor->ligne < cor->y_max)
     {
         line = get_next_line(fd);
         tab = ft_split(line, ' ');
         cor->matrice[cor->ligne] = malloc(cor->x_max * sizeof(int));
-        /*if (!cor->matrice[cor->ligne])
-        {
-            free(tab);
-            free(line);
-            return (1);
-        }*/
         cor->colonne = 0;
         while (cor->colonne < cor->x_max)
         {

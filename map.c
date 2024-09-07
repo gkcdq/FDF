@@ -11,10 +11,8 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 // calculer la largeur et la hauteur de notre Matrix.
-
 void	map_coord(t_matrice *cor, char *file)
 {
 	int		fd;
@@ -43,7 +41,7 @@ void	map_coord(t_matrice *cor, char *file)
 	free(tab);
 }
 
-// check s'il y a un cas d'erreur avec la Matrix.
+// check s'il y a un cas d'erreur avec la map.
 void	check_map(t_matrice *cor, char *file)
 {
 	int		fd;
@@ -107,51 +105,33 @@ int copi_matrice(t_matrice *cor, char *file)
     return (0);
 }
 
-static void free_matrice(t_matrice *cor)
+int main    (int ac, char **av)
 {
-    for (int i = 0; i < cor->ligne; i++)
-    {
-        free(cor->matrice[i]);
-    }
-    free(cor->matrice);
-}
-
-int main(int argc, char **argv) {
     t_matrice cor;
+    t_mlx   mlx;
 
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <fichier_map>\n", argv[0]);
-        return EXIT_FAILURE;
+    if (ac != 2)
+    {
+        cor.x_max = 0;
+        cor.y_max = 0;
+        cor.ligne = 0;
+        cor.colonne = 0;
+        cor.matrice = NULL;
+
+        map_coord(&cor, av[1]);
+        check_map(&cor, av[1]);
+        copi_matrice(&cor, av[1]);
+        mlx.mlx = mlx_init();
+	mlx.largeur_max = 1920;
+        mlx.hauteur_max = 1080;
+        mlx.img_largeur_max = 1720;
+        mlx.img_hauteur_max = 880;
+        mlx.img = mlx_new_image(mlx.mlx, mlx.img_largeur_max, mlx.img_hauteur_max);
+        mlx.win = mlx_new_window(mlx.mlx, mlx.largeur_max, mlx.hauteur_max, "FDF");
+        mlx_loop(mlx.mlx);
+        /*mlx_destroy_image(mlx.mlx, mlx.img);
+        mlx_destroy_window(mlx.mlx, mlx.win);
+        mlx_destroy_display(mlx.mlx);
+        free_matrice(&cor);*/
     }
-
-    // Initialisation des variables dans la structure
-    cor.x_max = 0;
-    cor.y_max = 0;
-    cor.ligne = 0;
-    cor.colonne = 0;
-    cor.x = 0; // Assurez-vous que cor->x est bien initialisé
-    cor.y = 0; // Assurez-vous que cor->y est bien initialisé
-    cor.matrice = NULL;  // Initialisation de la matrice
-
-    // Calculer les dimensions de la matrice
-    map_coord(&cor, argv[1]);
-
-    printf("Dimensions calculées: y_max = %d, x_max = %d\n", cor.y_max, cor.x_max);
-
-    // Vérifier la validité de la matrice
-    check_map(&cor, argv[1]);
-
-    // Allouer la matrice et la remplir avec des données du fichier
-    if (copi_matrice(&cor, argv[1]) != 0) {
-        fprintf(stderr, "Erreur dans copi_matrice\n");
-        return EXIT_FAILURE;
-    }
-
-    printf("Après allocation:\n");
-    printf("Ligne: %d\n", cor.ligne);
-    printf("Colonne: %d\n", cor.colonne);
-    free_matrice(&cor);
-
-    return EXIT_SUCCESS;
 }
-

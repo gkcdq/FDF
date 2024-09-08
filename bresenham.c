@@ -4,6 +4,10 @@ void bresenham(int x0, int y0, int x1, int y1, t_mlx *mlx)
 {
     t_brs *brs;
 
+    brs = malloc(sizeof(t_brs));
+    if (!brs)
+        return ;
+    little_bresenham(brs, x0, y0, x1, y1);
     while (1)
     {
         mlx_pixel_put(mlx->mlx, mlx->win, x0, y0, 0xFFFFFF);
@@ -24,19 +28,17 @@ void bresenham(int x0, int y0, int x1, int y1, t_mlx *mlx)
     free(brs);
 }
 
-void    little_bresenham(t_brs *brs)
+void    little_bresenham(t_brs *brs, int x0, int y0, int x1, int y1)
 {
-    brs = malloc(sizeof(t_brs));
-    if (!brs)
-        return ;
-    brs->dx = abs(x1 - x0); // largeur de la ligne a tracer en terme de pixel.
-    brs->dy = abs(y1 - y0); // hauteur de la ligne a tracer en terme de pixel.
+    brs->dx = abs(x1 - x0); // Largeur de la ligne a tracer en terme de pixel.
+    brs->dy = abs(y1 - y0); // Hauteur de la ligne a tracer en terme de pixel.
     if (x0 < x1)
-        brs->sx = 1;
-        else
-            brs->sx = -1
+        brs->sx = 1; // Direction d'incrémentation de x, +1 pour aller vers la droite.
+    else
+        brs->sx = -1; // Direction d'incrémentation de x, -1 pour aller vers la gauche.
     if (y0 < y1)
-        brs->sy
-    brs->sy = (y0 < y1) ? 1 : -1;
+        brs->sy = 1; // Direction d'incrémentation de y, +1 pour aller vers le bas.
+    else
+        brs->sy = -1; // Direction d'incrémentation de y, -1 pour aller vers le haut.
     brs->error = brs->dx - brs->dy;
 }

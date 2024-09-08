@@ -35,10 +35,10 @@ int main(int ac, char **av)
         ft_putendl_fd("Error: Failed to initialize MiniLibX", 2);
         return (1);
     }
-    mlx.largeur_max = 1920;
-    mlx.hauteur_max = 1080;
-    mlx.img_largeur_max = 1920;
-    mlx.img_hauteur_max = 1080;
+    mlx.largeur_max = 1120;
+    mlx.hauteur_max = 920;
+    mlx.img_largeur_max = 1120;
+    mlx.img_hauteur_max = 920;
     mlx.img = mlx_new_image(mlx.mlx, mlx.img_largeur_max, mlx.img_hauteur_max);
     if (!mlx.img)
     {

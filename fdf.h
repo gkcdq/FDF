@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 23:39:23 by tmilin            #+#    #+#             */
-/*   Updated: 2024/09/08 18:05:25 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/10 13:46:30 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct draw
 	int		z1;
 	int		color;
 	t_mlx	*mlx;
+	t_brs	*brs;
 }			t_draw;
 
 
@@ -82,9 +83,8 @@ void		draw_horizontale(t_draw *drw, t_matrice *cor);
 void		draw_verticale(t_draw *drw, t_matrice *cor);
 void    	draw_isometric(int *x, int *y, int z);
 // bresenham.c
-void 		bresenham(t_draw *drw, t_mlx *mlx);
+void 		bresenham(t_draw *drw);
 void    	little_bresenham(t_brs *brs, t_draw *drw);
-// centre.c
-void		center_image(t_mlx *mlx);
+void		centrer_l_image(t_draw *drw);
 
 #endif

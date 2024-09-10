@@ -1,4 +1,4 @@
-SRCS    = main.c map.c draw.c bresenham.c centre.c
+SRCS    = main.c map.c draw.c bresenham.c
 OBJS    = $(SRCS:.c=.o)
 NAME    = fdf
 CC      = gcc -g

@@ -1,31 +1,30 @@
 #include "fdf.h"
 
-void bresenham(t_draw *drw, t_mlx *mlx)
+void bresenham(t_draw *drw)
 {
-    t_brs *brs;
-
-    brs = malloc(sizeof(t_brs));
-    if (!brs)
+    drw->brs = malloc(sizeof(t_brs));
+    if (!drw->brs)
         return ;
-    little_bresenham(brs, drw);
+    little_bresenham(drw->brs, drw);
     while (1)
     {
-        mlx_pixel_put(mlx->mlx, mlx->win, drw->x0, drw->y0, 0xFFFFFF);
+        //centrer_l_image(drw);
+        mlx_pixel_put(drw->mlx->mlx, drw->mlx->win, drw->x0, drw->y0, 0xFFFFFF);
         if (drw->x0 == drw->x1 && drw->y0 == drw->y1)
             break;
-        brs->e2 = 2 * brs->error;
-        if (brs->e2 > -brs->dy)
+        drw->brs->e2 = 2 * drw->brs->error;
+        if (drw->brs->e2 > -drw->brs->dy)
         {
-            brs->error -= brs->dy;
-            drw->x0 += brs->sx;
+            drw->brs->error -= drw->brs->dy;
+            drw->x0 += drw->brs->sx;
         }
-        if (brs->e2 < brs->dx)
+        if (drw->brs->e2 < drw->brs->dx)
         {
-            brs->error += brs->dx;
-            drw->y0 += brs->sy;
+            drw->brs->error += drw->brs->dx;
+            drw->y0 += drw->brs->sy;
         }
     }
-    free(brs);
+    free(drw->brs);
 }
 
 void    little_bresenham(t_brs *brs, t_draw *drw)
@@ -33,13 +32,19 @@ void    little_bresenham(t_brs *brs, t_draw *drw)
     brs->dx = abs(drw->x1 - drw->x0); // Largeur de la ligne a tracer en terme de pixel.
     brs->dy = abs(drw->y1 - drw->y0); // Hauteur de la ligne a tracer en terme de pixel.
     if (drw->x0 < drw->x1)
-        brs->sx = 1; // Direction d'incrémentation de x, +1 pour aller vers la droite.
+        brs->sx = 1; // +1 pour aller vers la droite.
     else
-        brs->sx = -1; // Direction d'incrémentation de x, -1 pour aller vers la gauche.
+        brs->sx = -1; // -1 pour aller vers la gauche.
     if (drw->y0 < drw->y1)
-        brs->sy = 1; // Direction d'incrémentation de y, +1 pour aller vers le bas.
+        brs->sy = 1; // +1 pour aller vers le bas.
     else
-        brs->sy = -1; // Direction d'incrémentation de y, -1 pour aller vers le haut.
+        brs->sy = -1; // -1 pour aller vers le haut.
     brs->error = brs->dx - brs->dy;
+}
+
+void    centrer_l_image(t_draw *drw)
+{
+    drw->x0 = drw->mlx->hauteur_max / 2;
+    drw->y0 = drw->mlx->largeur_max / 2;
 }
 

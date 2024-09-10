@@ -2,7 +2,6 @@
 
 void	draw_lines(t_draw *drw, t_matrice *cor)
 {
-    center_image(drw->mlx);
 	draw_calcul(drw, cor);
 	ft_putendl_fd("Dessin complet.", 1);
 }
@@ -37,7 +36,7 @@ void	draw_horizontale(t_draw *drw, t_matrice *cor)
 	drw->y1 = drw->y * 10 - cor->matrice[drw->y][drw->x + 1];
 	draw_isometric(&drw->x1, &drw->y1, drw->z1);
 	ft_printf("Dessin de la ligne horizontal de (%d, %d) to (%d, %d)\n", drw->x0, drw->y0, drw->x1, drw->y1);
-	bresenham(drw, drw->mlx);
+	bresenham(drw);
 }
 // Tracer les lignes verticales de la matrice.
 void	draw_verticale(t_draw *drw, t_matrice *cor)
@@ -47,7 +46,7 @@ void	draw_verticale(t_draw *drw, t_matrice *cor)
 	drw->y1 = (drw->y + 1) * 10 - cor->matrice[drw->y + 1][drw->x];
 	draw_isometric(&drw->x1, &drw->y1, drw->z1);
 	ft_printf("Dessin de la ligne vertical de (%d, %d) to (%d, %d)\n", drw->x0, drw->y0, drw->x1, drw->y1);
-	bresenham(drw, drw->mlx);
+	bresenham(drw);
 }
 void	draw_isometric(int *x, int *y, int z)
 {

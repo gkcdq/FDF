@@ -56,6 +56,7 @@ int main(int ac, char **av)
     drw.mlx = &mlx;
 
     // Dessiner les lignes de la matrice avec Bresenham en vue isométrique
+    centrer_l_image(&drw);
     draw_lines(&drw, &cor);
 
     // Boucle d'événements MiniLibX

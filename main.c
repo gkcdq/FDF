@@ -15,11 +15,7 @@ int main(int ac, char **av)
     define_coordonnees(&cor);
     map_coord(&cor, av[1]);
     check_map(&cor, av[1]);
-    if (copi_matrice(&cor, av[1]) == -1)
-    {
-        ft_putendl_fd("Error: Failed to copy matrix", 2);
-        return (1);
-    }
+    copi_matrice(&cor, av[1]);
     mlx.mlx = mlx_init();
     define_image(&mlx);
     mlx.img = mlx_new_image(mlx.mlx, mlx.img_largeur_max, mlx.img_hauteur_max);

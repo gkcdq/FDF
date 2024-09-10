@@ -85,6 +85,7 @@ int	copi_matrice(t_matrice *cor, char *file)
 	cor->matrice = malloc(sizeof(int *) * cor->y_max);
 	if (!cor->matrice)
 		return (1);
+	//help_copi(fd, line, tab, cor);
 	while (cor->ligne < cor->y_max)
 	{
 		line = get_next_line(fd);
@@ -104,3 +105,28 @@ int	copi_matrice(t_matrice *cor, char *file)
 	close(fd);
 	return (0);
 }
+
+
+
+while (cor->ligne < cor->y_max)
+// Boucle a mettre dans une autre fonction.
+
+void	help_copi(int fd, char *line, char **tab, t_matrice *cor)
+{
+	while (cor->ligne < cor->y_max)
+	{
+		line = get_next_line(fd);
+		tab = ft_split(line, ' ');
+		cor->matrice[cor->ligne] = malloc(cor->x_max * sizeof(int));
+		cor->colonne = 0;
+		while (cor->colonne < cor->x_max)
+		{
+			cor->matrice[cor->ligne][cor->colonne] = ft_atoi(tab[cor->colonne]);
+			free(tab[cor->colonne]);
+			cor->colonne++;
+		}
+		free(tab);
+		free(line);
+		cor->ligne++;
+	}
+} 

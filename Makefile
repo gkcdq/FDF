@@ -1,4 +1,4 @@
-SRCS    = main.c map.c draw.c bresenham.c
+SRCS    = main.c map.c draw.c bresenham.c define.c pixel.c ft_scale.c
 OBJS    = $(SRCS:.c=.o)
 NAME    = fdf
 CC      = gcc -g

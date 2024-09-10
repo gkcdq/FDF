@@ -8,7 +8,6 @@ void bresenham(t_draw *drw)
     little_bresenham(drw->brs, drw);
     while (1)
     {
-        //centrer_l_image(drw);
         mlx_pixel_put(drw->mlx->mlx, drw->mlx->win, drw->x0, drw->y0, 0xFFFFFF);
         if (drw->x0 == drw->x1 && drw->y0 == drw->y1)
             break;
@@ -41,10 +40,3 @@ void    little_bresenham(t_brs *brs, t_draw *drw)
         brs->sy = -1; // -1 pour aller vers le haut.
     brs->error = brs->dx - brs->dy;
 }
-
-void    centrer_l_image(t_draw *drw)
-{
-    drw->x0 = drw->mlx->hauteur_max / 2;
-    drw->y0 = drw->mlx->largeur_max / 2;
-}
-

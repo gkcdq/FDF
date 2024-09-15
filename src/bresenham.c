@@ -12,44 +12,44 @@
 
 #include "fdf.h"
 
-void	bresenham(t_draw *dr)
+void	bresenham(t_draw *drw)
 {
-	dr->color = 0xFFFFFF;
-	dr->bre = malloc(sizeof(t_brs));
-	if (!dr->bre)
+	drw->color = 0xFFFFFF;
+	drw->brs = malloc(sizeof(t_brs));
+	if (!drw->brs)
 		return ;
-	little_bresenham(dr->bre, dr);
+	little_bresenham(drw->brs, drw);
 	while (1)
 	{
-		draw_pixel(dr->mlx, dr->x0, dr->y0, dr->color);
-		if (dr->x0 == dr->x1 && dr->y0 == dr->y1)
+		drwaw_pixel(drw->mlx, drw->x0, drw->y0, drw->color);
+		if (drw->x0 == drw->x1 && drw->y0 == drw->y1)
 			break ;
-		dr->bre->e2 = 2 * dr->bre->error;
-		if (dr->bre->e2 > -dr->bre->dy)
+		drw->brs->e2 = 2 * drw->brs->error;
+		if (drw->brs->e2 > -drw->brs->dy)
 		{
-			dr->bre->error -= dr->bre->dy;
-			dr->x0 += dr->bre->sx;
+			drw->brs->error -= drw->brs->dy;
+			drw->x0 += drw->brs->sx;
 		}
-		if (dr->bre->e2 < dr->bre->dx)
+		if (drw->brs->e2 < drw->brs->dx)
 		{
-			dr->bre->error += dr->bre->dx;
-			dr->y0 += dr->bre->sy;
+			drw->brs->error += drw->brs->dx;
+			drw->y0 += drw->brs->sy;
 		}
 	}
-	free(dr->bre);
+	free(drw->brs);
 }
 
-void	little_bresenham(t_brs *bre, t_draw *dr)
+void	little_bresenham(t_brs *brs, t_draw *drw)
 {
-	bre->dx = abs(dr->x1 - dr->x0);
-	bre->dy = abs(dr->y1 - dr->y0);
-	if (dr->x0 < dr->x1)
-		bre->sx = 1;
+	brs->dx = abs(drw->x1 - drw->x0);
+	brs->dy = abs(drw->y1 - drw->y0);
+	if (drw->x0 < drw->x1)
+		brs->sx = 1;
 	else
-		bre->sx = -1;
-	if (dr->y0 < dr->y1)
-		bre->sy = 1;
+		brs->sx = -1;
+	if (drw->y0 < drw->y1)
+		brs->sy = 1;
 	else
-		bre->sy = -1;
-	bre->error = bre->dx - bre->dy;
+		brs->sy = -1;
+	brs->error = brs->dx - brs->dy;
 }

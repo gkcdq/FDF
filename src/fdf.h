@@ -78,7 +78,7 @@ typedef struct draw
 	double					scale_y;
 	//double					scale_z;
 	coord					*cor;
-	t_brs					*bre;
+	t_brs					*brs;
 	t_mlx					*mlx;
 }							t_draw;
 

@@ -1,40 +1,44 @@
 #include "fdf.h"
 
-void	draw_pixel(t_mlx *mlx, int x, int y, int color)
+void	draw_pixel(t_mlx *mlx, int x, int y, int z)
 {
 	char *pxl;
-	// Vérifier que les coordonnées sont dans les limites de l'image
+    unsigned int color;
+
 	if (x >= 0 && x < LARGEUR && y >= 0 && y < HAUTEUR)
 	{
-		// Calculer l'adresse du pixel dans l'image
 		pxl = mlx->addr + (y * mlx->size_line + x * (mlx->bits_per_pixel / 8));
-		// Écrire la couleur dans l'adresse du pixel
+		color = color_pxl(z);
 		*(unsigned int *)pxl = color;
 	}
 }
 
-/*unsigned int color_pxl(t_draw *drw)
+unsigned int color_pxl(int z)
 {
-    if (drw->z <= -100)
-        drw->color_value = BLANC;
-    else if (drw->z <= -40)
-        drw->color_value = GRIS;
-    else if (drw->z <= 10)
-        drw->color_value = ROUGE;
-    else if (drw->z <= 40)
-        drw->color_value = ROUGE_ORANGE;
-    else if (drw->z <= 80)
-        drw->color_value = ORANGE;
-    else if (drw->z <= 120)
-        drw->color_value = JAUNE_ORANGE;
-    else if (drw->z <= 160)
-        drw->color_value = JAUNE;
-    else if (drw->z <= 200)
-        drw->color_value = VERT_JAUNE;
-    else if (drw->z <= 240)
-        drw->color_value = VERT;
-    else
-        drw->color_value = BLANC;
+    unsigned int color_value;
 
-    return (drw->color_value);
-}*/
+    if (z < -40 && z >= -100)
+        color_value = BLANC;
+    else if (z == 0)
+        color_value = VIOLET;
+    else if (z < 0 && z >= -40)
+        color_value = GRIS;
+    else if (z > 0 && z <= 10)
+        color_value = ROUGE;
+    else if (z > 10 && z <= 40)
+        color_value = ROUGE_ORANGE;
+    else if (z > 40 && z <= 80)
+        color_value = ORANGE;
+    else if (z > 80 && z <= 120)
+        color_value = JAUNE_ORANGE;
+    else if (z >120 && z <= 160)
+        color_value = JAUNE;
+    else if (z > 160 && z <= 200)
+        color_value = VERT_JAUNE;
+    else if (z > 200 && z <= 240)
+        color_value = VERT;
+    else
+        color_value = BLANC;
+
+    return (color_value);
+}

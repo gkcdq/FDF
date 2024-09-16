@@ -14,14 +14,14 @@
 
 void	bresenham(t_draw *drw)
 {
-	drw->color = 0xFFFFFF;
+	drw->color = 0xFFD700;
 	drw->brs = malloc(sizeof(t_brs));
 	if (!drw->brs)
 		return ;
 	little_bresenham(drw->brs, drw);
 	while (1)
 	{
-		draw_pixel(drw->mlx, drw->x0, drw->y0, drw->color);
+		draw_pixel(drw->mlx, drw->x0, drw->y0, drw->z0);
 		if (drw->x0 == drw->x1 && drw->y0 == drw->y1)
 			break ;
 		drw->brs->e2 = 2 * drw->brs->error;

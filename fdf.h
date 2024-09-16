@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 15:45:25 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 16:45:37 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct draw
 	int						offset_x;
 	int						offset_y;
 	int						color;
+	unsigned int			color_value;
 	double					scale_x;
 	double					scale_y;
 	double					scale_z;
@@ -117,7 +118,8 @@ void 						little_bresenham(t_brs *brs, t_draw *drw);
 void						bresenham(t_draw *drw);
 
 // pixel_and_color.c
-void						draw_pixel(t_mlx *mlx, int x, int y, int color);
+void						draw_pixel(t_mlx *mlx, int x, int y, int z);
+unsigned int				color_pxl(int z);
 
 // define.c
 void						define_cor(t_data *cor);

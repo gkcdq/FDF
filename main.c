@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:01:46 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 18:31:19 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 22:12:29 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 
 	// Dessiner les lignes de la matrice avec Bresenham en vue isométrique
 	draw_lines(&drw, &cor);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, (LARGEUR / 3), 0);
+	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, (0), (0));
 	mlx_loop(mlx.mlx);
 
 	// Libération de la mémoire

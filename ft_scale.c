@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 17:16:49 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 18:33:02 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 22:39:32 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ double	ft_scale(t_data *cor)
 	return (H);
 }
 
-double	scale_x(t_draw *drw)
+double	scale_x(t_draw *drw, t_data *cor)
 {
-	drw->scale_x = (double)IMG_LARGEUR_MAX / 200;
+	drw->scale_x = (double)LARGEUR / cor->x_max;
 	return (drw->scale_x);
 }
 
-double	scale_y(t_draw *drw)
+double	scale_y(t_draw *drw, t_data *cor)
 {
-	drw->scale_y = (double)IMG_HAUTEUR_MAX / 200;
+	drw->scale_y = (double)HAUTEUR / cor->y_max;
 	return (drw->scale_y);
 }

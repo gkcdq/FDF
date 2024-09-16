@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 18:30:26 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 22:38:53 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdlib.h>
 
 # define ANGLE 6.8
-# define IMG_HAUTEUR_MAX 2000
-# define IMG_LARGEUR_MAX 2000
+# define IMG_HAUTEUR_MAX 20
+# define IMG_LARGEUR_MAX 20
 # define LARGEUR 1920
 # define HAUTEUR 1080
 # define NOIR 0x0
@@ -34,7 +34,7 @@
 # define VERT_JAUNE 0xADFF2F
 # define VERT 0x008000
 # define BLEU_VERT 0x00CED1
-# define BLEU 0x0000FF
+# define BLEU 0x5f9ea0
 # define VIOLET 0x8A2BE2
 
 typedef struct data	t_data;
@@ -110,8 +110,8 @@ void						draw_lines(t_draw *drw, t_data *cor);
 
 // ft_scale.c
 double						ft_scale(t_data *cor);
-double						scale_x(t_draw *drw);
-double						scale_y(t_draw *drw);
+double						scale_x(t_draw *drw, t_data *cor);
+double						scale_y(t_draw *drw, t_data *cor);
 
 // bresenham.c
 void 						little_bresenham(t_brs *brs, t_draw *drw);

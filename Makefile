@@ -6,7 +6,7 @@
 #    By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/11 15:59:26 by nharraqi          #+#    #+#              #
-#    Updated: 2024/09/16 15:26:43 by tmilin           ###   ########.fr        #
+#    Updated: 2024/09/16 22:07:40 by tmilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,3 +46,9 @@ valgrind: ${NAME}
 	valgrind $(VALGRIND_FLAGS) ./${NAME}
 
 .PHONY: all clean fclean re valgrind libft minilibx-linux
+
+test : all
+	./${NAME} test_maps/42.fdf
+
+square : all
+	./${NAME} test_maps/square.fdf

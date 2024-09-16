@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:21:06 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 15:38:56 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 22:20:32 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,12 @@ void	copi_matrice(t_data *cor, char *file)
 		line = get_next_line(fd);
 		line_tab = ft_split(line, ' ');
 		free(line);
-		cor->x = -1;
-		while (++cor->x < cor->x_max)
+		cor->x = 0;
+		while (cor->x < cor->x_max)
 		{
 			cor->final_tab[cor->y][cor->x] = ft_atoi(line_tab[cor->x]);
 			free(line_tab[cor->x]);
+			cor->x++;
 		}
 		cor->y++;
 		free(line_tab);

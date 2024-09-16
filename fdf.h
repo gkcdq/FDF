@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 22:38:53 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 22:49:42 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define ROUGE 0xFF0000
 # define ROUGE_ORANGE 0xFF4500
 # define ORANGE 0xFFA500
+# define VERT_ORANGE 0x2e8b57
 # define JAUNE_ORANGE 0xFFD700
 # define JAUNE 0xFFFF00
 # define VERT_JAUNE 0xADFF2F

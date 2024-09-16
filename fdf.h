@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 16:45:37 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 18:30:26 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <stdlib.h>
 
 # define ANGLE 6.8
-# define IMG_HAUTEUR_MAX 800
-# define IMG_LARGEUR_MAX 800
-# define LARGEUR 1980
+# define IMG_HAUTEUR_MAX 2000
+# define IMG_LARGEUR_MAX 2000
+# define LARGEUR 1920
 # define HAUTEUR 1080
 # define NOIR 0x0
 # define GRIS 0xbebebe

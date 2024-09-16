@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 22:49:42 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/16 23:21:20 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void						copi_matrice(t_data *cor, char *file);
 // draw.c
 void						draw_horizontale(t_draw *drw, t_data *cor);
 void						draw_verticale(t_draw *drw, t_data *cor);
-void						draw_isometrique(int *x, int *y, int z);
+//void						draw_isometrique(int *x, int *y, int z);
 void						draw_calcul(t_draw *drw, t_data *cor);
 void						draw_lines(t_draw *drw, t_data *cor);
 
@@ -115,8 +115,9 @@ double						scale_x(t_draw *drw, t_data *cor);
 double						scale_y(t_draw *drw, t_data *cor);
 
 // bresenham.c
-void 						little_bresenham(t_brs *brs, t_draw *drw);
-void						bresenham(t_draw *drw);
+//void 						little_bresenham(t_brs *brs, t_draw *drw);
+//void						bresenham(t_draw *drw);
+void	non_diagonal_line(t_draw *drw);
 
 // pixel_and_color.c
 void						draw_pixel(t_mlx *mlx, int x, int y, int z);

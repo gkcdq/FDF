@@ -49,7 +49,8 @@ void	draw_verticale(t_draw *drw, t_data *cor)
 	drw->x1 = (drw->x * scale_x(drw, cor));// + drw->offset_x;
 	drw->y1 = (((drw->y + 1) * scale_y(drw, cor) - cor->final_tab[drw->y + 1][drw->x]));// + drw->offset_y;
 	//draw_isometrique(&drw->x1, &drw->y1, drw->z1);
-	bresenham(drw);
+	//bresenham(drw);
+	non_diagonal_line(drw);
 }
 
 void	draw_horizontale(t_draw *drw, t_data *cor)
@@ -58,10 +59,11 @@ void	draw_horizontale(t_draw *drw, t_data *cor)
 	drw->x1 = ((drw->x + 1) * scale_x(drw, cor));// + drw->offset_x;
 	drw->y1 = ((drw->y * scale_y(drw, cor) - cor->final_tab[drw->y][drw->x + 1]));// + drw->offset_y;
 	//draw_isometrique(&drw->x1, &drw->y1, drw->z1);
-	bresenham(drw);
+	//bresenham(drw);
+	non_diagonal_line(drw);
 }
 
-void	draw_isometrique(int *x, int *y, int z)
+/*void	draw_isometrique(int *x, int *y, int z)
 {
 	return ;
 	int	tmp_x;
@@ -71,5 +73,5 @@ void	draw_isometrique(int *x, int *y, int z)
 	tmp_y = *y;
 	*x = (tmp_x - tmp_y) * cos(ANGLE);
 	*y = (((tmp_x + tmp_y) * sin(ANGLE)) - z);
-}
+}*/
 

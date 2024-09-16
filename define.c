@@ -1,9 +1,9 @@
 #include "fdf.h"
 
-void	define_cor(coord *cor)
+void	define_cor(t_data *cor)
 {
-	cor->xmax = 0;
-	cor->ymax = 0;
+	cor->x_max = 0;
+	cor->y_max = 0;
 	cor->x = 0;
 	cor->y = 0;
 	cor->final_tab = NULL;

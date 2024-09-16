@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nharraqi <nharraqi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:21:06 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/13 22:41:15 by nharraqi         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:38:56 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	map_mesure(coord *cor, char *file)
+void	map_mesure(t_data *cor, char *file)
 {
 	int		fd;
 	char	*line;
@@ -25,15 +25,15 @@ void	map_mesure(coord *cor, char *file)
 	if (!line)
 		ft_putendl_fd("probleme line = gnl(map_mesure)", 1);
 	tab = ft_split(line, ' ');
-	while (tab[cor->xmax])
+	while (tab[cor->x_max])
 	{
-		free(tab[cor->xmax]);
-		cor->xmax++;
+		free(tab[cor->x_max]);
+		cor->x_max++;
 	}
 	while (line)
 	{
 		free(line);
-		cor->ymax++;
+		cor->y_max++;
 		line = get_next_line(fd);
 	}
 	free(line);
@@ -41,7 +41,7 @@ void	map_mesure(coord *cor, char *file)
 	close(fd);
 }
 
-void	check_matrice(coord *cor, char *file)
+void	check_matrice(t_data *cor, char *file)
 {
 	int		i;
 	int		fd;
@@ -65,7 +65,7 @@ void	check_matrice(coord *cor, char *file)
 			i++;
 		}
 		free(tab);
-		if (i < cor->xmax || i > cor->xmax)
+		if (i < cor->x_max || i > cor->x_max)
 			ft_putendl_fd("pas le meme nombre d'element par ligne! (check_matrice)",
 				1);
 		line = get_next_line(fd);
@@ -74,22 +74,22 @@ void	check_matrice(coord *cor, char *file)
 	close(fd);
 }
 
-void	copi_matrice(coord *cor, char *file)
+void	copi_matrice(t_data *cor, char *file)
 {
 	int fd;
 	char *line;
 	char **line_tab;
 
 	fd = open(file, O_RDONLY);
-	cor->final_tab = malloc(cor->ymax * sizeof(int *));
-	while (cor->y < cor->ymax)
+	cor->final_tab = malloc(cor->y_max * sizeof(int *));
+	while (cor->y < cor->y_max)
 	{
-		cor->final_tab[cor->y] = malloc(cor->xmax * sizeof(int));
+		cor->final_tab[cor->y] = malloc(cor->x_max * sizeof(int));
 		line = get_next_line(fd);
 		line_tab = ft_split(line, ' ');
 		free(line);
 		cor->x = -1;
-		while (++cor->x < cor->xmax)
+		while (++cor->x < cor->x_max)
 		{
 			cor->final_tab[cor->y][cor->x] = ft_atoi(line_tab[cor->x]);
 			free(line_tab[cor->x]);

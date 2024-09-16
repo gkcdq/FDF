@@ -21,7 +21,7 @@ void	bresenham(t_draw *drw)
 	little_bresenham(drw->brs, drw);
 	while (1)
 	{
-		drwaw_pixel(drw->mlx, drw->x0, drw->y0, drw->color);
+		draw_pixel(drw->mlx, drw->x0, drw->y0, drw->color);
 		if (drw->x0 == drw->x1 && drw->y0 == drw->y1)
 			break ;
 		drw->brs->e2 = 2 * drw->brs->error;

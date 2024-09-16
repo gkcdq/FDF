@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nharraqi <nharraqi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/14 19:44:52 by nharraqi         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:45:25 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define ANGLE 7.37
-# define SCL_HAUTEUR 900
-# define SCL_LARGEUR 900
+# define ANGLE 6.8
+# define IMG_HAUTEUR_MAX 800
+# define IMG_LARGEUR_MAX 800
 # define LARGEUR 1980
 # define HAUTEUR 1080
 # define NOIR 0x0
@@ -37,19 +37,19 @@
 # define BLEU 0x0000FF
 # define VIOLET 0x8A2BE2
 
-typedef struct coordonnees	coord;
+typedef struct data	t_data;
 typedef struct bresenham	t_brs;
 typedef struct draw			t_draw;
 typedef struct mlx			t_mlx;
 
-typedef struct coordonnees
+typedef struct data
 {
 	int						x;
 	int						y;
-	int						xmax;
-	int						ymax;
+	int						x_max;
+	int						y_max;
 	int						**final_tab;
-}							coord;
+}							t_data;
 
 typedef struct bresenham
 {
@@ -76,8 +76,8 @@ typedef struct draw
 	int						color;
 	double					scale_x;
 	double					scale_y;
-	//double					scale_z;
-	coord					*cor;
+	double					scale_z;
+	t_data					*cor;
 	t_brs					*brs;
 	t_mlx					*mlx;
 }							t_draw;
@@ -93,22 +93,22 @@ typedef struct mlx
 	char					*addr;
 	int						endian;
 	t_draw					*drw;
-	coord					*cor;
+	t_data					*cor;
 }							t_mlx;
 // map.c
-void						map_mesure(coord *cor, char *file);
-void						check_matrice(coord *cor, char *file);
-void						copi_matrice(coord *cor, char *file);
+void						map_mesure(t_data *cor, char *file);
+void						check_matrice(t_data *cor, char *file);
+void						copi_matrice(t_data *cor, char *file);
 
 // draw.c
-void						draw_horizontale(t_draw *drw, coord *cor);
-void						draw_verticale(t_draw *drw, coord *cor);
+void						draw_horizontale(t_draw *drw, t_data *cor);
+void						draw_verticale(t_draw *drw, t_data *cor);
 void						draw_isometrique(int *x, int *y, int z);
-void						draw_calcul(t_draw *drw, coord *cor);
-void						draw_lines(t_draw *drw, coord *cor);
+void						draw_calcul(t_draw *drw, t_data *cor);
+void						draw_lines(t_draw *drw, t_data *cor);
 
 // ft_scale.c
-double						ft_scale(coord *cor);
+double						ft_scale(t_data *cor);
 double						scale_x(t_draw *drw);
 double						scale_y(t_draw *drw);
 
@@ -120,7 +120,7 @@ void						bresenham(t_draw *drw);
 void						draw_pixel(t_mlx *mlx, int x, int y, int color);
 
 // define.c
-void						define_cor(coord *cor);
+void						define_cor(t_data *cor);
 void						define_draw(t_draw *drw);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:10:26 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/20 16:24:52 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/20 16:33:58 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	draw_horizontale(t_draw *drw, t_data *cor)
 
 void	draw_isometrique(int *x, int *y, int z)
 {
-	return ;
+	//return ;
 	int	tmp_x;
 	int	tmp_y;
 

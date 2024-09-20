@@ -20,7 +20,7 @@ unsigned int color_pxl(int z)
     if (z < -40 && z >= -100)
         color_value = BLANC;
     else if (z >= 0 && z <= 10)
-        color_value = NOIR;
+        color_value = ROUGE;
     else if (z > 10 && z <= 30)
         color_value = VERT;
     else if (z > 30 && z <= 80)

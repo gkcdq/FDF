@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/18 18:52:38 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/20 23:07:39 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define ANGLE 0.523599
+# define ANGLE 6.8
 # define IMG_HAUTEUR_MAX 20
 # define IMG_LARGEUR_MAX 20
 # define LARGEUR 1920
@@ -101,9 +101,9 @@ void						check_matrice(t_data *cor, char *file);
 void						copi_matrice(t_data *cor, char *file);
 
 // draw.c
-void						draw_horizontale(t_draw *drw, t_data *cor);
-void						draw_verticale(t_draw *drw, t_data *cor);
-void						draw_calcul(t_draw *drw, t_data *cor);
+void						draw_horizontale(t_draw drw, t_data *cor);
+void						draw_verticale(t_draw drw, t_data *cor);
+void						draw_calcul(t_draw drw, t_data *cor);
 void						draw_lines(t_draw *drw, t_data *cor);
 void						draw_isometrique(int *x, int *y, int z);
 

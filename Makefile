@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS    = main.c map.c draw.c bresenham.c ft_scale.c pixel_and_color.c define.c
+SRCS    = main.c ft_scale.c draw.c bresenham.c define.c map.c pixel_and_color.c
 OBJS    = $(SRCS:.c=.o)
 NAME    = fdf
 CC      = gcc -g

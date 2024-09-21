@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:21:06 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/16 22:20:32 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/21 19:57:29 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	map_mesure(t_data *cor, char *file)
 	close(fd);
 }
 
-void	check_matrice(t_data *cor, char *file)
+void	check_matrice(char *file)
 {
 	int		i;
 	int		fd;
@@ -49,11 +49,7 @@ void	check_matrice(t_data *cor, char *file)
 	char	**tab;
 
 	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		ft_putendl_fd("probleme fd (check_matrice)", 1);
 	line = get_next_line(fd);
-	if (!line)
-		ft_putendl_fd("probleme line = gnl(check_matrice)", 1);
 	while (line)
 	{
 		tab = ft_split(line, ' ');
@@ -65,9 +61,6 @@ void	check_matrice(t_data *cor, char *file)
 			i++;
 		}
 		free(tab);
-		if (i < cor->x_max || i > cor->x_max)
-			ft_putendl_fd("pas le meme nombre d'element par ligne! (check_matrice)",
-				1);
 		line = get_next_line(fd);
 	}
 	free(line);

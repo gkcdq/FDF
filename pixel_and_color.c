@@ -20,21 +20,22 @@ unsigned int color_pxl(int z)
     if (z < -40 && z >= -100)
         color_value = BLANC;
     else if (z >= 0 && z <= 10)
-        color_value = ROUGE;
-    else if (z > 10 && z <= 30)
-        color_value = VERT;
-    else if (z > 30 && z <= 80)
-        color_value = VERT_ORANGE;
-    else if (z > 70 && z <= 120)
-        color_value = ORANGE;
-    else if (z >120 && z <= 160)
-        color_value = ROUGE_ORANGE;
-    else if (z > 160 && z <= 200)
-        color_value = ROUGE;
-    else if (z > 200 && z <= 240)
         color_value = BLEU;
+    else if (z > 10 && z <= 30)
+        color_value = JAUNE_ORANGE;
+    else if (z > 30 && z <= 80)
+        color_value = MARRON;
+    else if (z > 70 && z <= 120)
+        color_value = VERT;
+    else if (z >120 && z <= 160)
+        color_value = VERT_ORANGE;
+    else if (z > 160 && z <= 200)
+        color_value = VERT;
+    else if (z > 200 && z <= 240)
+        color_value = VERT_JAUNE;
+    else if (z > 240 && z <= 350)
+        color_value = 0x404040;
     else
         color_value = BLANC;
-
     return (color_value);
 }

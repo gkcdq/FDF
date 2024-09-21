@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/20 23:07:39 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/21 19:57:44 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define BLEU_VERT 0x00CED1
 # define BLEU 0x5f9ea0
 # define VIOLET 0x8A2BE2
+# define MARRON 0xd2691e
+
 
 typedef struct data	t_data;
 typedef struct bresenham	t_brs;
@@ -47,6 +49,7 @@ typedef struct data
 {
 	int						x;
 	int						y;
+	int						z;
 	int						x_max;
 	int						y_max;
 	int						**final_tab;
@@ -97,7 +100,7 @@ typedef struct mlx
 }							t_mlx;
 // map.c
 void						map_mesure(t_data *cor, char *file);
-void						check_matrice(t_data *cor, char *file);
+void						check_matrice(char *file);
 void						copi_matrice(t_data *cor, char *file);
 
 // draw.c

@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:01:46 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/21 19:27:33 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/22 17:30:17 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,25 @@ int	main(int ac, char **av)
 	drw.cor = &cor;
 	draw_lines(&drw, &cor);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, (0), (0));
+	h_management(&mlx);
 	mlx_loop(mlx.mlx);
-	int i;
-	for (i = 0; i < cor.y_max; i++)
-	{
-		free(cor.final_tab[i]);
-	}
-	free(cor.final_tab);
-	mlx_destroy_image(mlx.mlx, mlx.img);
-	mlx_destroy_window(mlx.mlx, mlx.win);
-
 	return (0);
 }
+int		ft_close(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	exit (0);
+}
+
+int	key_handler(int key, t_mlx *mlx)
+{
+	if (key == 65307)
+		ft_close(mlx);
+	return(0);
+}
+void	h_management(t_mlx *mlx)
+{
+	mlx_key_hook(mlx->win, key_handler, mlx);
+	mlx_hook(mlx->win, 0, 65307, ft_close, mlx);
+}
+	

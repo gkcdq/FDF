@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:10:26 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/21 20:02:45 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/22 16:23:51 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void	draw_isometrique(int *x, int *y, int z)
 
 	tmp_x = *x;
 	tmp_y = *y;
-	*x = (LARGEUR / 3) + (tmp_x - tmp_y) * cos(ANGLE) / 3;
+	*x = (LARGEUR / 2.5) + (tmp_x - tmp_y) * cos(ANGLE) / 2.81;
 	*y = (HAUTEUR / 2.81) + (((tmp_x + tmp_y) * sin(ANGLE)) - z) / 3;
 }

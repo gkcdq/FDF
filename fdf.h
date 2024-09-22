@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:22:23 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/21 19:57:44 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/22 17:28:30 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define ANGLE 6.8
 # define IMG_HAUTEUR_MAX 20
 # define IMG_LARGEUR_MAX 20
+# define EXIT 53
 # define LARGEUR 1920
 # define HAUTEUR 1080
 # define NOIR 0x0
@@ -100,7 +101,7 @@ typedef struct mlx
 }							t_mlx;
 // map.c
 void						map_mesure(t_data *cor, char *file);
-void						check_matrice(char *file);
+void						check_matrice(t_data *cor, char *file);
 void						copi_matrice(t_data *cor, char *file);
 
 // draw.c
@@ -128,5 +129,11 @@ unsigned int				color_pxl(int z);
 void						define_cor(t_data *cor);
 void						define_draw(t_draw *drw);
 void						define_points_start(t_draw *drw, t_data *cor);
+
+// main.c
+int		ft_close(t_mlx *mlx);
+int		key_handler(int key, t_mlx *mlx);
+void	h_management(t_mlx *mlx);
+
 
 #endif

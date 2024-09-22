@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:21:06 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/21 19:57:29 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/22 16:20:05 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	map_mesure(t_data *cor, char *file)
 	close(fd);
 }
 
-void	check_matrice(char *file)
+void	check_matrice(t_data *cor, char *file)
 {
 	int		i;
 	int		fd;
@@ -61,6 +61,8 @@ void	check_matrice(char *file)
 			i++;
 		}
 		free(tab);
+		if (i < cor->x_max || i > cor->x_max)
+			ft_putendl_fd("pas le meme nombre d'element par ligne! (check_matrice)", 1);
 		line = get_next_line(fd);
 	}
 	free(line);

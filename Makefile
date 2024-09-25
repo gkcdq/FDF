@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS    = main.c ft_scale.c draw.c bresenham.c define.c map.c pixel_and_color.c
+SRCS    = main.c ft_scale.c draw.c bresenham.c define.c map.c pixel_and_color.c /
+			color+.c hook.c
 OBJS    = $(SRCS:.c=.o)
 NAME    = fdf
 CC      = gcc -g
@@ -50,5 +51,5 @@ valgrind: ${NAME}
 test : all
 	./${NAME} test_maps/42.fdf
 
-square : all
-	./${NAME} test_maps/square.fdf
+#square : all
+#	./${NAME} test_maps/square.fdf

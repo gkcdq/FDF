@@ -35,25 +35,8 @@ int	main(int ac, char **av)
 	drw.cor = &cor;
 	draw_lines(&drw, &cor);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, (0), (0));
-	h_management(&mlx);
+	manage_close(&mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
-}
-int		ft_close(t_mlx *mlx)
-{
-	mlx_destroy_window(mlx->mlx, mlx->win);
-	exit (0);
-}
-
-int	key_handler(int key, t_mlx *mlx)
-{
-	if (key == 65307)
-		ft_close(mlx);
-	return(0);
-}
-void	h_management(t_mlx *mlx)
-{
-	mlx_key_hook(mlx->win, key_handler, mlx);
-	mlx_hook(mlx->win, 0, 65307, ft_close, mlx);
 }
 	

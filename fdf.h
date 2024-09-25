@@ -24,21 +24,80 @@
 # define EXIT 53
 # define LARGEUR 1920
 # define HAUTEUR 1080
-# define NOIR 0x0
-# define GRIS 0xbebebe
-# define BLANC 0xFFFFFF
-# define ROUGE 0xFF0000
-# define ROUGE_ORANGE 0xFF4500
-# define ORANGE 0xFFA500
-# define VERT_ORANGE 0x2e8b57
-# define JAUNE_ORANGE 0xFFD700
-# define JAUNE 0xFFFF00
-# define VERT_JAUNE 0xADFF2F
-# define VERT 0x008000
-# define BLEU_VERT 0x00CED1
-# define BLEU 0x5f9ea0
-# define VIOLET 0x8A2BE2
-# define MARRON 0xd2691e
+// ------NOIR-----------
+# define NOIR0 0xd9d9d9
+# define NOIR1 0xbfbfbf
+# define NOIR2 0xa6a6a6
+# define NOIR3 0x8c8c8c
+# define NOIR4 0x737373
+# define NOIR5 0x595959
+# define NOIR6 0x404040
+# define NOIR7 0x262626
+// ------JAUNE----------
+# define JAUNE0 0xeee8aa 
+# define JAUNE1 0xfafad2 
+# define JAUNE2 0xffffe0 
+# define JAUNE3 0xffff00 
+# define JAUNE4 0xffd700 
+# define JAUNE5 0xeedd82 
+# define JAUNE6 0xdaa520 
+# define JAUNE7 0xb8860b
+// ------ORANGE---------
+# define ORANGE0 0xffe5cc
+# define ORANGE1 0xffcc99
+# define ORANGE2 0xffb366
+# define ORANGE3 0xff9933
+# define ORANGE4 0xff8000
+# define ORANGE5 0xcc6600
+# define ORANGE6 0x994c00
+# define ORANGE7 0x663300
+// ------ROUGE---------
+# define ROUGE0 0xffe5e5 
+# define ROUGE1 0xffb3b3 
+# define ROUGE2 0xff8080 
+# define ROUGE3 0xff4d4d 
+# define ROUGE4 0xff1a1a 
+# define ROUGE5 0xe60000 
+# define ROUGE6 0xb30000 
+# define ROUGE7 0x800000
+// ------ROSE----------
+# define ROSE0 0xffe5e5
+# define ROSE1 0xffb3b3
+# define ROSE2 0xff8080
+# define ROSE3 0xff4d4d
+# define ROSE4 0xff1a1a
+# define ROSE5 0xe60073
+# define ROSE6 0xb30059
+# define ROSE7 0x800040
+// ------BLEU----------
+# define BLEU0 0xe5f6ff
+# define BLEU1 0xb3e0ff
+# define BLEU2 0x80ccff
+# define BLEU3 0x4db8ff
+# define BLEU4 0x1aa3ff
+# define BLEU5 0x007acc
+# define BLEU6 0x005999
+# define BLEU7 0x003366
+// ------VERT----------
+# define VERT0 0xe5ffe5
+# define VERT1 0xb3ffb3
+# define VERT2 0x80ff80
+# define VERT3 0x4dff4d
+# define VERT4 0x1aff1a
+# define VERT5 0x00cc00
+# define VERT6 0x009900
+# define VERT7 0x006600
+// ------BEIGE---------
+# define BEIGE0 0xf5f5dc
+# define BEIGE1 0xe8cba2
+# define BEIGE2 0xd2b48c
+# define BEIGE3 0xdeb887
+# define BEIGE4 0xc2b280
+# define BEIGE5 0xbda16b
+# define BEIGE6 0xb39f8e
+# define BEIGE7 0x9e7e6d
+
+
 
 
 typedef struct data	t_data;
@@ -111,7 +170,6 @@ void						draw_calcul(t_draw drw, t_data *cor);
 void						draw_lines(t_draw *drw, t_data *cor);
 void						draw_isometrique(int *x, int *y, int z);
 
-
 // ft_scale.c
 double						ft_scale(t_data *cor);
 double						scale_x(t_draw *drw, t_data *cor);
@@ -124,6 +182,16 @@ void						bresenham(t_draw *drw);
 // pixel_and_color.c
 void						draw_pixel(t_mlx *mlx, int x, int y, int z);
 unsigned int				color_pxl(int z);
+unsigned int 				noir(int z);
+unsigned int 				bleu(int z);
+unsigned int 				vert(int z);
+
+// color+.c
+unsigned int 				rose(int z);
+unsigned int 				rouge(int z);
+unsigned int 				orange(int z);
+unsigned int 				jaune(int z);
+unsigned int 				beige(int z);
 
 // define.c
 void						define_cor(t_data *cor);
@@ -131,9 +199,13 @@ void						define_draw(t_draw *drw);
 void						define_points_start(t_draw *drw, t_data *cor);
 
 // main.c
-int		ft_close(t_mlx *mlx);
-int		key_handler(int key, t_mlx *mlx);
-void	h_management(t_mlx *mlx);
+int							ft_close(t_mlx *mlx);
+int							key_handler(int key, t_mlx *mlx);
+void						manage_close(t_mlx *mlx);
 
+// hook.c
+int							ft_close(t_mlx *mlx);
+int							key_handler(int key, t_mlx *mlx);
+void						manage_close(t_mlx *mlx);
 
 #endif

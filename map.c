@@ -20,7 +20,10 @@ void	map_mesure(t_data *cor, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_putendl_fd("probleme fd (map_mesure)", 1);
+	{
+		ft_putendl_fd("probleme de fd", 1);
+		exit(0);
+	}
 	line = get_next_line(fd);
 	if (!line)
 		ft_putendl_fd("probleme line = gnl(map_mesure)", 1);

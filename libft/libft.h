@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 15:42:07 by tmilin            #+#    #+#             */
-/*   Updated: 2024/09/05 13:55:58 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/25 22:46:47 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(const char *s, unsigned int start, size_t len);
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
-char				**ft_split(char const *st, char sep);
+char				**ft_split(const char *st, char sep);
 // get_next_line
 char				*get_next_line(int fd);
 // void_fonctions
@@ -78,7 +78,6 @@ void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
-void				free_tab(char **tab);
 // size_t_fonctions
 size_t				ft_strlen(const char *s);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);

@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:37:33 by tmilin            #+#    #+#             */
-/*   Updated: 2024/09/05 13:57:10 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/25 22:13:56 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static char	*stash_filling(int fd, char *stash, char *buffer);
 static char	*extract_new_stash(char	*stash);
 static char	*extract_line(char *stash, char *line);
-
 
 char	*get_next_line(int fd)
 {

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hook.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmilin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/25 21:21:52 by tmilin            #+#    #+#             */
+/*   Updated: 2024/09/25 21:56:24 by tmilin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-int		ft_close(t_mlx *mlx)
+int	ft_close(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	exit (0);
@@ -10,8 +22,9 @@ int	key_handler(int key, t_mlx *mlx)
 {
 	if (key == 65307 || key == 17)
 		ft_close(mlx);
-	return(0);
+	return (0);
 }
+
 void	manage_close(t_mlx *mlx)
 {
 	mlx_key_hook(mlx->win, key_handler, mlx);

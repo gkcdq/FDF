@@ -1,17 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/11 15:59:26 by nharraqi          #+#    #+#              #
-#    Updated: 2024/09/16 22:07:40 by tmilin           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-SRCS    = main.c ft_scale.c draw.c bresenham.c define.c map.c pixel_and_color.c /
-			color+.c hook.c
+SRCS    = main.c ft_scale.c draw.c bresenham.c define.c map.c pixel_and_color.c color.c hook.c
 OBJS    = $(SRCS:.c=.o)
 NAME    = fdf
 CC      = gcc -g

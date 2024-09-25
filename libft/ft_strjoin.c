@@ -6,7 +6,7 @@
 /*   By: tmilin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 15:17:17 by tmilin            #+#    #+#             */
-/*   Updated: 2024/06/15 18:06:24 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/25 22:22:41 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	if (!s1)
-	{
-		free(s1);
+	if (!s1 || !s2)
 		return (NULL);
-	}
-	if (!s2)
-	{
-		free(s2);
-		return (NULL);
-	}
 	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);

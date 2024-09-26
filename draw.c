@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:10:26 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/25 21:36:57 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/26 02:22:47 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	draw_calcul(t_draw drw, t_data *cor)
 			}
 		}
 	}
+	free_all(cor);
 }
 
 void	draw_verticale(t_draw d, t_data *c)

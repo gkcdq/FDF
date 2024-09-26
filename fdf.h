@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 21:42:29 by tmilin            #+#    #+#             */
-/*   Updated: 2024/09/25 21:59:15 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/26 09:04:32 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 
 # define ANGLE 6.8
-# define EXIT 53
 # define LARGEUR 1920
 # define HAUTEUR 1080
 
@@ -163,8 +162,6 @@ typedef struct mlx
 	t_data					*cor;
 }	t_mlx;
 
-// Function Prototypes
-
 // map.c
 void						map_mesure(t_data *cor, char *file);
 void						check_matrice(t_data *cor, char *file);
@@ -193,7 +190,7 @@ unsigned int				noir(int z);
 unsigned int				bleu(int z);
 unsigned int				vert(int z);
 
-// color+.c
+// color.c
 unsigned int				rose(int z);
 unsigned int				rouge(int z);
 unsigned int				orange(int z);
@@ -204,6 +201,7 @@ unsigned int				beige(int z);
 void						define_cor(t_data *cor);
 void						define_draw(t_draw *drw);
 void						define_points_start(t_draw *drw, t_data *cor);
+void						free_all(t_data *cor);
 
 // main.c
 int							ft_close(t_mlx *mlx);

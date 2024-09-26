@@ -6,7 +6,7 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:37:33 by tmilin            #+#    #+#             */
-/*   Updated: 2024/09/25 22:13:56 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/26 03:20:41 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static char	*stash_filling(int fd, char *stash, char *buffer);
 static char	*extract_new_stash(char	*stash);
 static char	*extract_line(char *stash, char *line);
+static char	*free_stash(char *stash);
 
 char	*get_next_line(int fd)
 {
@@ -69,6 +70,15 @@ static char	*stash_filling(int fd, char *stash, char *buffer)
 	return (stash);
 }
 
+static char	*free_stash(char *stash)
+{
+	if (stash)
+	{
+		free(stash);
+	}
+	return (NULL);
+}
+
 static char	*extract_new_stash(char	*stash)
 {
 	int		len;
@@ -83,6 +93,8 @@ static char	*extract_new_stash(char	*stash)
 		len++;
 	if (stash[len] == '\n')
 		len++;
+	if (stash[len] == '\0')
+		return (free_stash(stash));
 	new_stash = malloc((ft_strlen(stash) - len + 1) * sizeof(char));
 	if (!new_stash)
 		return (NULL);

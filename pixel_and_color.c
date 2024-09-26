@@ -101,7 +101,7 @@ unsigned int	vert(int z)
 	unsigned int	c;
 
 	if (z > 60 && z <= 70)
-		c = VERT0;
+		c = VERT1;
 	else if (z > 70 && z <= 80)
 		c = VERT1;
 	else if (z > 80 && z <= 90)

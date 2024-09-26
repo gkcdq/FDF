@@ -10,7 +10,7 @@ LDFLAGS = -Llibft -L./minilibx-linux -lft -lmlx -lXext -lX11 -lGL -lm
 
 INCLUDES = -Ilibft -I./minilibx-linux
 
-all: ${NAME}
+all: minilibx-linux ${NAME} 
 
 %.o: %.c
 	${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
@@ -28,15 +28,12 @@ clean:
 fclean: clean
 	${RM} ${NAME}
 
+minilibx-linux:
+	git clone https://github.com/42Paris/minilibx-linux.git $@
+
 re: fclean all
 
 valgrind: ${NAME}
 	valgrind $(VALGRIND_FLAGS) ./${NAME}
 
 .PHONY: all clean fclean re valgrind libft minilibx-linux
-
-test : all
-	./${NAME} test_maps/42.fdf
-
-#square : all
-#	./${NAME} test_maps/square.fdf

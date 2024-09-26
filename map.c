@@ -6,11 +6,13 @@
 /*   By: tmilin <tmilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:21:06 by nharraqi          #+#    #+#             */
-/*   Updated: 2024/09/25 22:05:37 by tmilin           ###   ########.fr       */
+/*   Updated: 2024/09/26 08:52:31 by tmilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	get_out_fail(int fd);
 
 static int	check_fd(int fd, char *file)
 {
@@ -51,6 +53,13 @@ void	map_mesure(t_data *cor, char *file)
 	close(fd);
 }
 
+static void	get_out_fail(int fd)
+{
+	close(fd);
+	ft_putendl_fd("wrong elements lines!", 1);
+	exit (0);
+}
+
 void	check_matrice(t_data *cor, char *file)
 {
 	int		i;
@@ -72,7 +81,7 @@ void	check_matrice(t_data *cor, char *file)
 		}
 		free(tab);
 		if (i < cor->x_max || i > cor->x_max)
-			ft_putendl_fd("wrong elements lines!", 1);
+			get_out_fail(fd);
 		line = get_next_line(fd);
 	}
 	free(line);
